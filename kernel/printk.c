@@ -503,14 +503,14 @@ void kdb_syslog_data(char *syslog_data[4])
  */
 static void __call_console_drivers(unsigned start, unsigned end)
 {
-	struct console *con;
+/*	struct console *con;
 
 	for_each_console(con) {
 		if ((con->flags & CON_ENABLED) && con->write &&
 				(cpu_online(smp_processor_id()) ||
 				(con->flags & CON_ANYTIME)))
 			con->write(con, &LOG_BUF(start), end - start);
-	}
+	}*/
 }
 
 static int __read_mostly ignore_loglevel;

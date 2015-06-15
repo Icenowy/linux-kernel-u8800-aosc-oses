@@ -496,11 +496,11 @@ void mdp4_mddi_dma_busy_wait(struct msm_fb_data_type *mfd)
 		/* wait until DMA finishes the current job */
 		pr_debug("%s: PENDING, pid=%d\n", __func__, current->pid);
 /* <DTS2010101602934 hufeng 20101016 begin */
-#ifdef CONFIG_HUAWEI_KERNEL
-        wait_for_completion_interruptible_timeout(&mfd->dma->comp, 1 * HZ);
-#else
+//#ifdef CONFIG_HUAWEI_KERNEL
+//        wait_for_completion_interruptible_timeout(&mfd->dma->comp, 1 * HZ);
+//#else
 		wait_for_completion(&mfd->dma->comp);
-#endif
+//#endif
 /* DTS2010101602934 hufeng 20101016 end> */
 	}
 	pr_debug("%s: DONE, pid=%d\n", __func__, current->pid);
@@ -657,12 +657,12 @@ void mdp4_mddi_dma_s_kickoff(struct msm_fb_data_type *mfd,
 
 	/* wait until DMA finishes the current job */
 /* <DTS2010100802855 hufeng 20101008 begin */
-#ifdef CONFIG_HUAWEI_KERNEL
+//#ifdef CONFIG_HUAWEI_KERNEL
     /* huawei modify */
-	wait_for_completion_interruptible_timeout(&mfd->dma->comp, 2 * HZ);
-#else
+//	wait_for_completion_interruptible_timeout(&mfd->dma->comp, 2 * HZ);
+//#else
 	wait_for_completion(&mfd->dma->comp);
-#endif
+//#endif
 /* DTS2010100802855 hufeng 20101008 end> */
 	mdp_disable_irq(MDP_DMA_S_TERM);
 }
